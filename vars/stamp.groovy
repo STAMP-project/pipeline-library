@@ -25,7 +25,12 @@ def lastStableVersion() {
 	echo  "BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}" 
 	}
 	dir ('oldVersion') {
-		env.GIT_COMMIT = "a1d9ee8e9151438e20930449c0297800b17b0696"
-		checkout scm 
+		 checkout([
+         $class: 'GitSCM',
+         branches: 'a1d9ee8e9151438e20930449c0297800b17b0696',
+         doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+         extensions: scm.extensions,
+         userRemoteConfigs: scm.userRemoteConfigs
+    	])
 	}
 }
