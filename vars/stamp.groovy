@@ -27,7 +27,7 @@ def lastStableVersion() {
 	dir ('oldVersion') {
 		 checkout([
          $class: 'GitSCM',
-         branches: 'a1d9ee8e9151438e20930449c0297800b17b0696',
+         branches: [[ name: 'a1d9ee8e9151438e20930449c0297800b17b0696']],
          doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
          extensions: scm.extensions,
          userRemoteConfigs: scm.userRemoteConfigs
