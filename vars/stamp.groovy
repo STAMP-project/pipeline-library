@@ -2,6 +2,6 @@ def info(message) {
     echo "INFO: ${message}"
 }
 
-def lastStabelVersion() {
-    echo ${currentBuild.previousBuild.fullDisplayName}
+def lastStableVersion() {
+    echo "${currentBuild.previousBuild.fullDisplayName}"
 }
