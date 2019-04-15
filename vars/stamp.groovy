@@ -10,7 +10,6 @@ def lastStableVersion() {
     	for (changeLog in build.changeSets) {
         	for(entry in changeLog.items) {
         		echo entry.commitId
-        		echo entry.timestamp
             	for(file in entry.affectedFiles) {
                 	changes += "* ${file.path}\n"
             	}
