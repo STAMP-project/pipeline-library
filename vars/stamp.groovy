@@ -3,5 +3,5 @@ def info(message) {
 }
 
 def lastStableVersion() {
-    echo "${currentBuild.previousBuild.fullDisplayName}"
+    echo "fullDisplayName: ${currentBuild.previousBuild.fullDisplayName}"
 }
