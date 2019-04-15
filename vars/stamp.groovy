@@ -5,7 +5,7 @@ def info(message) {
 def lastStableVersion() {
     def changes = "Changes:\n"
 	build = currentBuild.previousBuild
-	while(build != null && build.result != 'SUCCESS' &&  build.changeSets != null) {
+	while(build != null && build.result != 'SUCCESS') {
     	changes += "In ${build.id}:\n"
     	for (changeLog in build.changeSets) {
         	for(entry in changeLog.items) {
@@ -18,5 +18,7 @@ def lastStableVersion() {
 	    }
     	build = build.previousBuild
 	}
+
 	echo changes
+	echo build.id
 }
