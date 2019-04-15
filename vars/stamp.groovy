@@ -10,6 +10,7 @@ def lastStableVersion() {
 	}
 
 	// get last commit id
+	// TODO get commit from the project repo
 	if (build != null){
 		def lastcommit = null;
 		def lastcommitTimestamp = null;
@@ -21,7 +22,10 @@ def lastStableVersion() {
         		}
         	}
 	    }
-	echo  "BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}"   		
+	echo  "BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}" 
 	}
-	
+	dir ('oldVersion') {
+		env.GIT_COMMIT = "a1d9ee8e9151438e20930449c0297800b17b0696"
+		chechout scm 
+	}
 }
