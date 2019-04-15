@@ -26,6 +26,6 @@ def lastStableVersion() {
 	}
 	dir ('oldVersion') {
 		env.GIT_COMMIT = "a1d9ee8e9151438e20930449c0297800b17b0696"
-		chechout scm 
+		checkout scm 
 	}
 }
