@@ -3,21 +3,19 @@ def info(message) {
 }
 
 def lastStableVersion() {
-    def changes = "Changes:\n"
+	// gest last sable build with a changeSets
 	build = currentBuild.previousBuild
 	while(build != null && (build.result != 'SUCCESS' || (build.result == 'SUCCESS' && build.changeSets == null) ) ) {
-    	changes += "In ${build.id}:\n"
-    	for (changeLog in build.changeSets) {
-        	for(entry in changeLog.items) {
-        		echo entry.commitId
-            	for(file in entry.affectedFiles) {
-                	changes += "* ${file.path}\n"
-            	}
-        	}
-	    }
     	build = build.previousBuild
 	}
 
-	echo changes
-	echo build.id
+	// get last commit id
+	if (build != null){
+    	for (changeLog in build.changeSets) {
+        	for(entry in changeLog.items) {
+				echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
+        	}
+	    }		
+	}
+	
 }
