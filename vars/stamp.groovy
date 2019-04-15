@@ -11,11 +11,17 @@ def lastStableVersion() {
 
 	// get last commit id
 	if (build != null){
+		def lastcommit = null;
+		def lastcommitTimestamp = null;
     	for (changeLog in build.changeSets) {
         	for(entry in changeLog.items) {
-				echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
+        		if (lastcommitTimestamp == null || lastcommitTimestamp < new Date(entry.timestamp)){
+        			lastcommitTimestamp = new Date(entry.timestamp);
+        			lastcommit = entry.commitId;
+        		}
         	}
-	    }		
+	    }
+	echo  "BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}"   		
 	}
 	
 }
