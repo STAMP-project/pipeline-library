@@ -4,11 +4,13 @@ def info(message) {
 
 def lastStableVersion() {
     def changes = "Changes:\n"
-	build = currentBuild
+	build = currentBuild.previousBuild
 	while(build != null && build.result != 'SUCCESS') {
     	changes += "In ${build.id}:\n"
     	for (changeLog in build.changeSets) {
         	for(entry in changeLog.items) {
+        		echo entry.commitId
+        		echo entry.timestamp
             	for(file in entry.affectedFiles) {
                 	changes += "* ${file.path}\n"
             	}
