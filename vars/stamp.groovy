@@ -1,14 +1,9 @@
-def info(message) {
-    echo "INFO: ${message}"
-}
-
-def lastStableVersion() {
+def cloneLastStableVersion(String foldername = "oldVersion") {
 	// gest last sable build with a changeSets
 	build = currentBuild.previousBuild
 	while(build != null && (build.result != 'SUCCESS' || (build.result == 'SUCCESS' && build.changeSets == null) ) ) {
     	build = build.previousBuild
 	}
-
 	// get last commit id
 	// TODO get commit from the project repo
 	if (build != null){
@@ -22,16 +17,15 @@ def lastStableVersion() {
         		}
         	}
 	    }
-	echo  "BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}" 
+	echo  "LAST STABLE BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}" 
 	}
-	dir ('oldVersion') {
-		 checkout([
-         $class: 'GitSCM',
-		 branches: [[ name: '3805f324']]
-		 //,
-         //doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
-         //extensions: scm.extensions,
-         //userRemoteConfigs: scm.userRemoteConfigs
-    	])
+	// clone last stable build
+	if (lastcommit != null){
+		dir (foldername) {
+		 	checkout([
+         	$class: 'GitSCM',
+		 	branches: [[ name: lastcommit]]
+    		])
+		}
 	}
 }
