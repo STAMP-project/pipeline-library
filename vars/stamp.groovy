@@ -6,8 +6,8 @@ def cloneLastStableVersion(String foldername = "oldVersion") {
 	}
 	// get last commit id
 	// TODO get commit from the project repo
+	def lastcommit = null;
 	if (build != null){
-		def lastcommit = null;
 		def lastcommitTimestamp = null;
     	for (changeLog in build.changeSets) {
         	for(entry in changeLog.items) {
