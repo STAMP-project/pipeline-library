@@ -22,6 +22,9 @@ def cloneLastStableVersion(String foldername = "oldVersion") {
 	// clone last stable build
 	if (lastcommit != null){
 		dir (foldername) {
+			// clone last version
+			checkout scm
+			// checkout last stable commit
 		 	checkout([
          	$class: 'GitSCM',
 		 	branches: [[ name: "${lastcommit}"]]
