@@ -6,7 +6,7 @@ To use Jenkins Pipeline Shared Library, you will need:
 - [Jenkins 2.x](https://jenkins.io/download/) or later (older versions back to 1.642.3 may work but are not recommended)
 - [Pipeline plugin](https://plugins.jenkins.io/workflow-aggregator), which is installed as part of the "suggested plugins"
 
-### Unsing Libraries
+### Using Libraries
 To install Jenkins Pipeline Shared Library follow the [official guide](https://jenkins.io/doc/book/pipeline/shared-libraries/#using-libraries).
 
 ### Library Functions
