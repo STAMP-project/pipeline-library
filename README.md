@@ -15,4 +15,10 @@ To install Jenkins Pipeline Shared Library follow the [official guide](https://j
 
 Clone in the specified folder the previous stable version of the project (as defined in Jenkins scm section).
 
+#### String getLastStableCommitVersion()
 
+Get [SHA-1](https://git-scm.com/docs/gitglossary#def_SHA1) [Commit](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefcommitacommit) of the previous stable version of the project
+
+#### cloneCommitVersion(String commitVersion, String foldername)
+
+Clone in the specified folder the specified commitVersion of the project (as defined in Jenkins scm section).
