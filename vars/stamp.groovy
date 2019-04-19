@@ -1,4 +1,8 @@
 def cloneLastStableVersion(String foldername = "oldVersion") {
+	cloneCommitVersion(getLastStableCommitVersion(),foldername);
+}
+
+String getLastStableCommitVersion(){
 	// gest last sable build with a changeSets
 	build = currentBuild.previousBuild
 	while(build != null && (build.result != 'SUCCESS' || (build.result == 'SUCCESS' && build.changeSets == null) ) ) {
@@ -17,17 +21,21 @@ def cloneLastStableVersion(String foldername = "oldVersion") {
         		}
         	}
 	    }
-	echo  "LAST STABLE BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}" 
+	echo  "LAST STABLE BUILD_ID: ${build.id} COMMIT_ID: ${lastcommit}"
 	}
-	// clone last stable build
-	if (lastcommit != null){
+	return lastcommit
+}
+
+def cloneCommitVersion(String commitVersion, String foldername) {
+		// clone last stable build
+	if (commitVersion != null){
 		dir (foldername) {
 			// clone last version
 			checkout scm
-			// checkout last stable commit
+			// revert to commit version
 		 	checkout([
          	$class: 'GitSCM',
-		 	branches: [[ name: "${lastcommit}"]]
+		 	branches: [[ name: "${commitVersion}"]]
     		])
 		}
 	}
