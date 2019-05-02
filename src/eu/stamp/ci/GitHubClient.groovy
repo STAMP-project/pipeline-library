@@ -1,4 +1,4 @@
-@Grab('org.eclipse.jgit:org.eclipse.jgit:5.2.0.201812061821-r')
+@Grab(group='org.eclipse.jgit', module='org.eclipse.jgit', version='5.2.0.201812061821-r')
 import org.eclipse.egit.github.core.PullRequest
 import org.eclipse.egit.github.core.Repository
 import org.eclipse.egit.github.core.client.GitHubClient
