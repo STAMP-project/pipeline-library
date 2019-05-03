@@ -1,4 +1,4 @@
-package 
+package eu.stamp.ci
 
 @Grab('org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.3.0.201903061415-rc1')
 import org.eclipse.egit.github.core.PullRequest
