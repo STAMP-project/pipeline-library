@@ -15,13 +15,14 @@ import java.net.Proxy
 class Client {
 
     def createPullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle,
-			String pullRequestBody, String branchSource, String branchDestination) {
+			String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null) {
         GitHubClient client = new GitHubClient();
         client.setOAuth2Token(tocken);
-        Proxy proxy = new Proxy(Proxy.Type.HTTP,
-					new InetSocketAddress("proxy.eng.it", 3128));
-		client.setProxy(proxy);
-
+        if (proxyHost != null){
+            Proxy proxy = new Proxy(Proxy.Type.HTTP,
+                        new InetSocketAddress(proxyHost, proxyPort));
+            client.setProxy(proxy);
+        }
         RepositoryService repoService = new RepositoryService(client);
 		Repository repository = repoService.getRepository(repositoryOwner, repositoryName);
 
