@@ -1,5 +1,6 @@
 package eu.stamp.ci
 
+@GrabResolver(name='egit-releases', root='https://repo.eclipse.org/content/repositories/egit-releases/')
 @Grab('org.eclipse.mylyn.github:org.eclipse.egit.github.core:5.3.0.201903061415-rc1')
 @Grab(group='com.google.code.gson', module='gson', version='2.3.1')
 import org.eclipse.egit.github.core.PullRequest
@@ -12,7 +13,7 @@ import org.eclipse.egit.github.core.PullRequestMarker
 import java.net.InetSocketAddress
 import java.net.Proxy
 
-class Client {
+class GitHubPullRequest {
 
     def createPullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle,
 			String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null) {
