@@ -7,6 +7,7 @@ import org.eclipse.egit.github.core.service.PullRequestService
 import org.eclipse.egit.github.core.Repository
 import org.eclipse.egit.github.core.client.GitHubClient
 import org.eclipse.egit.github.core.service.RepositoryService
+import org.eclipse.egit.github.core.PullRequestMarker
 
 class Client {
 
