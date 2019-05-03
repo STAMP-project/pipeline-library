@@ -22,3 +22,16 @@ Get [SHA-1](https://git-scm.com/docs/gitglossary#def_SHA1) [Commit](https://git-
 #### cloneCommitVersion(String commitVersion, String foldername)
 
 Clone in the specified folder the specified commitVersion of the project (as defined in Jenkins scm section).
+
+#### pullRequest(String token, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null)
+
+Create a pull request in a github repository.
+- token: [github token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)
+- repositoryName: name of the repository
+- repositoryOwner: owner of the repository
+- pullRequestTitle: title of the Pull Request
+- pullRequestBody: description body of the Pull Request
+- branchSource: branch source
+- branchDestionation: branch destination
+- proxyHost (optional): host of the proxy
+- proxyPort (optional): port of the proxy
