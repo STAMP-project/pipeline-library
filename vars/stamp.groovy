@@ -42,5 +42,5 @@ def cloneCommitVersion(String commitVersion, String foldername) {
 }
 
 def pullRequest() {
-	new eu.stamp.ci.GitHubClient().createPullRequest()
+	new eu.stamp.ci.Client().createPullRequest()
 }
