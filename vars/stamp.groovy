@@ -43,8 +43,8 @@ def cloneCommitVersion(String commitVersion, String foldername) {
 	}
 }
 
-def pullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null) {
-	new eu.stamp.ci.GitHubPullRequest().createPullRequest(tocken, repositoryName,repositoryOwner,pullRequestTitle,
+def pullRequest(String token, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null) {
+	new eu.stamp.ci.GitHubPullRequest().createPullRequest(token, repositoryName,repositoryOwner,pullRequestTitle,
 			pullRequestBody, branchSource, branchDestination, proxyHost, proxyPort)
 }
 
