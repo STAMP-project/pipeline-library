@@ -40,3 +40,8 @@ def cloneCommitVersion(String commitVersion, String foldername) {
 		}
 	}
 }
+
+def pullRequest() {
+	def ghc = new eu.stamp.ci.GitHubClient()
+    ghc.createPullRequest()
+}
