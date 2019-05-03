@@ -3,6 +3,7 @@ def cloneLastStableVersion(String foldername = "oldVersion") {
 }
 
 String getLastStableCommitVersion(){
+	// use variable GIT_PREVIOUS_SUCCESSFUL_COMMIT
 	// gest last sable build with a changeSets
 	build = currentBuild.previousBuild
 	while(build != null && (build.result != 'SUCCESS' || (build.result == 'SUCCESS' && build.changeSets == null) ) ) {
@@ -41,6 +42,10 @@ def cloneCommitVersion(String commitVersion, String foldername) {
 	}
 }
 
-def pullRequest() {
-	new eu.stamp.ci.Client().createPullRequest()
+def pullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination) {
+	new eu.stamp.ci.Client().createPullRequest(tocken, repositoryName,repositoryOwner,pullRequestTitle,
+			pullRequestBody, branchSource, branchDestination)
 }
+
+// push example	
+//https://github.com/jenkinsci/pipeline-examples/tree/master/pipeline-examples/push-git-repo

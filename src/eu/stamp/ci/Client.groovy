@@ -10,10 +10,23 @@ import org.eclipse.egit.github.core.service.RepositoryService
 
 class Client {
 
-    def createPullRequest() {
+    def createPullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle,
+			String pullRequestBody, String branchSource, String branchDestination) {
         GitHubClient client = new GitHubClient();
-        client.setOAuth2Token("prova");
+        client.setOAuth2Token(tocken);
+
         RepositoryService repoService = new RepositoryService(client);
-        PullRequestService service = new PullRequestService(client);
+		Repository repository = repoService.getRepository(repositoryOwner, repositoryName);
+
+		PullRequestService service = new PullRequestService(client);
+
+		PullRequest request = new PullRequest();
+		request.setTitle(pullRequestTitle);
+		request.setBody(pullRequestBody);
+
+		request.setHead(new PullRequestMarker().setRef(branchSource).setLabel(branchSource));
+		request.setBase(new PullRequestMarker().setRef(branchDestination).setLabel(branchDestination));
+
+		PullRequest pr = service.createPullRequest(repository, request);
     }
 }
