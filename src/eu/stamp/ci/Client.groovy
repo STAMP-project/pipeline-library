@@ -19,7 +19,7 @@ class Client {
         GitHubClient client = new GitHubClient();
         client.setOAuth2Token(tocken);
         Proxy proxy = new Proxy(Proxy.Type.HTTP,
-					new InetSocketAddress("proxy.eng.it", "3128"));
+					new InetSocketAddress("proxy.eng.it", 3128));
 		client.setProxy(proxy);
 
         RepositoryService repoService = new RepositoryService(client);
