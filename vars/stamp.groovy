@@ -42,9 +42,9 @@ def cloneCommitVersion(String commitVersion, String foldername) {
 	}
 }
 
-def pullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination) {
+def pullRequest(String tocken, String repositoryName, String repositoryOwner, String pullRequestTitle, String pullRequestBody, String branchSource, String branchDestination, String proxyHost=null, Integer proxyPort=null) {
 	new eu.stamp.ci.Client().createPullRequest(tocken, repositoryName,repositoryOwner,pullRequestTitle,
-			pullRequestBody, branchSource, branchDestination, "proxy.eng.it",3128)
+			pullRequestBody, branchSource, branchDestination, proxyHost, proxyPort)
 }
 
 // push example	
