@@ -7,9 +7,12 @@ import org.eclipse.egit.github.core.Repository
 import org.eclipse.egit.github.core.client.GitHubClient
 import org.eclipse.egit.github.core.service.RepositoryService
 
-void createPullRequest() {
-    GitHubClient client = new GitHubClient();
-    client.setOAuth2Token("prova");
-    RepositoryService repoService = new RepositoryService(client);
-    PullRequestService service = new PullRequestService(client);
+class GitHubClient {
+
+    def createPullRequest() {
+        GitHubClient client = new GitHubClient();
+        client.setOAuth2Token("prova");
+        RepositoryService repoService = new RepositoryService(client);
+        PullRequestService service = new PullRequestService(client);
+    }
 }
